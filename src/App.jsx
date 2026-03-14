@@ -40,9 +40,6 @@ const Navbar = ({ currentView, setView, toggleTheme, isDark }) => {
           >
             {isDark ? '☀️' : '🌙'}
           </button>
-          <button onClick={() => setView('Tools')} className="hidden sm:flex min-h-[44px] px-6 py-2 bg-aksana-primary text-white rounded-xl font-semibold hover:bg-opacity-90 transition-all shadow-md active:scale-95 items-center justify-center">
-            Coba Free Tools
-          </button>
         </div>
       </div>
     </nav>
