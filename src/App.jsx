@@ -5,6 +5,7 @@ import Chart from 'chart.js/auto';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import logoAksana from './assets/AKSANA - LOGO.png';
+import LoginForm from './components/LoginForm';
 
 // --- COMPONENTS ---
 
@@ -33,6 +34,13 @@ const Navbar = ({ currentView, setView, toggleTheme, isDark }) => {
         </div>
 
         <div className="flex items-center gap-4">
+          <button 
+            onClick={() => setView('Login')} 
+            className="hidden sm:flex min-h-[44px] px-6 py-2 bg-aksana-primary text-white rounded-xl font-semibold hover:bg-opacity-90 transition-all shadow-md active:scale-95 items-center justify-center gap-2"
+          >
+            <i className="fa-solid fa-right-to-bracket"></i> Login
+          </button>
+          
           <button 
             onClick={toggleTheme} 
             className="min-h-[44px] min-w-[44px] p-2 rounded-xl glass-panel hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors flex items-center justify-center text-xl"
@@ -513,6 +521,8 @@ const App = () => {
             </div>
           </div>
         );
+      case 'Login':
+        return <LoginForm onBack={() => setCurrentView('Home')} onLoginSuccess={() => setCurrentView('Tools')} />;
       default:
         return null;
     }
@@ -520,7 +530,9 @@ const App = () => {
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
-      <Navbar currentView={currentView} setView={setCurrentView} toggleTheme={toggleTheme} isDark={isDark} />
+      {currentView !== 'Login' && (
+        <Navbar currentView={currentView} setView={setCurrentView} toggleTheme={toggleTheme} isDark={isDark} />
+      )}
       <main className="flex-grow flex flex-col">
         {renderContent()}
       </main>
