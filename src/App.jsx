@@ -6,6 +6,7 @@ import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import logoAksana from './assets/AKSANA - LOGO.png';
 import LoginForm from './components/LoginForm';
+import ClientHub from './components/ClientHub';
 
 // --- COMPONENTS ---
 
@@ -522,23 +523,29 @@ const App = () => {
           </div>
         );
       case 'Login':
-        return <LoginForm onBack={() => setCurrentView('Home')} onLoginSuccess={() => setCurrentView('Tools')} />;
+        return <LoginForm onBack={() => setCurrentView('Home')} onLoginSuccess={() => setCurrentView('ClientHub')} />;
+      case 'ClientHub':
+        return <ClientHub onLogout={() => setCurrentView('Home')} />;
       default:
         return null;
     }
   };
 
+  const isDashboardView = currentView === 'Login' || currentView === 'ClientHub';
+
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
-      {currentView !== 'Login' && (
+      {!isDashboardView && (
         <Navbar currentView={currentView} setView={setCurrentView} toggleTheme={toggleTheme} isDark={isDark} />
       )}
       <main className="flex-grow flex flex-col">
         {renderContent()}
       </main>
-      <footer className="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500 mt-auto">
-        <p>© {new Date().getFullYear()} Aksana Business Lab. Menjadikan Bisnis Lebih Rapi, Tumbuh, dan Menenangkan.</p>
-      </footer>
+      {!isDashboardView && (
+        <footer className="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500 mt-auto">
+          <p>© {new Date().getFullYear()} Aksana Business Lab. Menjadikan Bisnis Lebih Rapi, Tumbuh, dan Menenangkan.</p>
+        </footer>
+      )}
     </div>
   );
 };

@@ -42,13 +42,6 @@ const LoginForm = ({ onBack, onLoginSuccess }) => {
           <div className="flex flex-col gap-2 relative">
             <div className="flex justify-between items-center ml-1">
               <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Password</label>
-              <button 
-                type="button"
-                className="text-xs font-semibold text-aksana-primary dark:text-aksana-accent hover:underline"
-                onClick={() => console.log('Lupa Password clicked')}
-              >
-                Lupa Password?
-              </button>
             </div>
             <input 
               required
@@ -68,9 +61,10 @@ const LoginForm = ({ onBack, onLoginSuccess }) => {
           </button>
         </form>
 
-        <div className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
-          Belum punya akun? <button className="font-semibold text-aksana-primary dark:text-aksana-accent hover:underline">Daftar Free</button>
-        </div>
+        <p className="text-center text-sm text-slate-500 dark:text-slate-400 mt-6">
+          Mengalami kendala saat login? <br/>
+          <span className="font-medium text-slate-700 dark:text-slate-300">Silakan hubungi Manajer Akun Anda.</span>
+        </p>
       </div>
     </div>
   );

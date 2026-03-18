@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background-color: rgba(156, 163, 175, 0.3); border-radius: 10px; }
+.dark ::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.1); }
+
+/* Animations */
+.fade-enter { animation: fadeIn 0.4s ease-out forwards; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chart-container { position: relative; width: 100%; height: 300px; max-height: 400px; margin: 0 auto; }
+.chart-large { height: 350px; max-height: 450px; }
+@media (min-width: 768px) { .chart-container { height: 320px; } .chart-large { height: 400px; } }
+
+.touch-target { min-height: 44px; min-width: 44px; }
+
 @layer base {
   body {
     @apply font-sans antialiased bg-slate-50 text-slate-900 dark:bg-aksana-dark dark:text-slate-50 transition-colors duration-300;
